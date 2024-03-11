@@ -21,9 +21,9 @@ export default function NewMessages() {
         <>
             {newMessage.length > 0 &&
                 <div>
-                    <div className='flex items-center gap-4'>
-                        <button className='text-center' onClick={() => setRealod(reload => reload + 1)}><img className=' w-7 h-7' src='https://cdn-icons-png.flaticon.com/128/9464/9464081.png'></img></button>
-                        <h1 className=' font-semibold'>New Messages</h1>
+                    <div className='flex items-center gap-2'>
+                        <button className='text-center' onClick={() => setRealod(reload => reload + 1)}><img className=' w-6 h-6' src='https://cdn-icons-png.flaticon.com/128/9464/9464081.png'></img></button>
+                        <h1 className=' font-semibold text-sm text-gray-700'>New Messages</h1>
                     </div>
                     {
                         newMessage.map(item => {

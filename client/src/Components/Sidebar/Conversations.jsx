@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Conversation from './Conversation'
 import useGetConversations from '../../hooks/useGetConversations';
 
@@ -8,7 +8,7 @@ export default function Conversations() {
   return (
     <div className=' flex flex-col '>
 
-      <h1 className='m-2 font-semibold'>Users</h1>
+      <h1 className='m-2 font-semibold'>Chats</h1>
 
       {loading ? <span className=' loading loading-spinner'></span> :
         (

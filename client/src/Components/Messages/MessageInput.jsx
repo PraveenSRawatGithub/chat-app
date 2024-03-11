@@ -2,6 +2,8 @@ import { useState, useEffect, useReducer, useRef } from "react";
 import { BsSend } from "react-icons/bs";
 import EmojiPicker from 'emoji-picker-react';
 import useSendMessage from "../../hooks/useSendMessage";
+import { useUpdateSeenStatus } from "../../hooks/useUpdateSeenStatus";
+import { useGetUnseenMessages } from "../../hooks/useGetUnseenMessages";
 
 const MessageInput = () => {
   const [message, setMessage] = useState("");

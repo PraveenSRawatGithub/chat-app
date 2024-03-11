@@ -22,7 +22,7 @@ const useListenMessages = () => {
     return senderName; 
   };
 
-  const { messages, setMessages, selectedConversation, newMessageCollection, setNewMessageCollection } = useConversation();
+  const { messages, setMessages, selectedConversation, newMessageCollection, setNewMessageCollection, demo, setDemo } = useConversation();
 
   useEffect(() => {
     socket?.on("newMessage", (newMessage) => {
@@ -42,6 +42,7 @@ const useListenMessages = () => {
           icon: false
         });
         setNewMessageCollection(newMessage.senderId);
+        setDemo(demo => demo + 1)
         notificationSound.play();
       }
     });

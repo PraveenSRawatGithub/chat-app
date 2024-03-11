@@ -1,6 +1,7 @@
 import Conversation from "../models/conversation.model.js";
 import Message from "../models/message.model.js";
 import { getReceiverSocketId, io } from "../socket/socket.js";
+import { Types } from 'mongoose';
 
 export const sendMessage = async (req, res) => {
     try {
@@ -67,3 +68,67 @@ export const getMessages = async (req, res) => {
         res.status(500).json({ error: "Internal server error" });
     }
 };
+
+export const updateSeenStatus = async (req, res) => {
+    try {
+        const { messageId } = req.params;
+        const message = await Message.findByIdAndUpdate(messageId, { seen: true }, { new: true });
+
+        const { _id, seen } = message;
+
+        res.status(200).json({ _id, seen });
+    } catch (error) {
+        console.log("Error in updateSeenStatus controller: ", error.message);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+};
+
+export const getLastMessage = async (req, res) => {
+    try {
+        const { id: receiverId } = req.params;
+        console.log("id got from client : ", receiverId)
+        console.log("id got from client : ", typeof (receiverId))
+        const senderId = req.user._id;
+
+        const conversation = await Conversation.findOne({
+            participants: { $all: [senderId, receiverId] },
+        }).populate("messages");
+
+        if (!conversation) return res.status(200).json([]);
+
+        const messages = conversation.messages;
+
+        const lastMessage = messages[messages.length - 1]
+
+        res.status(200).json(lastMessage)
+    }
+    catch (error) {
+        console.log("Error in getLastMessage controller: ", error.message);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+}
+
+export const getUnseenMessages = async (req, res) => {
+    try {
+        const { id: userToChatId } = req.params;
+        const currentUserId = req.user._id;
+
+        const conversation = await Conversation.findOne({
+            participants: { $all: [currentUserId, userToChatId] }
+        }).populate("messages");
+
+        if (!conversation) {
+            return res.status(200).json({ unseen: 0 })
+        }
+
+        const messages = conversation.messages;
+        const userToChatIdObject = new Types.ObjectId(userToChatId); // Convert userToChatId to ObjectId
+
+        const unseenMessages = messages.filter(item => (item.seen === false && item.senderId.equals(userToChatIdObject)));
+        res.status(200).json({ unseen: unseenMessages.length.toString() })
+
+    } catch (error) {
+        console.log("Error in getUnseenMessages controller: ", error.message);
+        res.status(500).json({ error: "Internal Server Error" })
+    }
+}
