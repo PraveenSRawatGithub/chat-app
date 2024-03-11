@@ -32,7 +32,7 @@ export default function Conversation({ conversation }) {
     return (
         <>
             <div className={`flex gap-2 items-center hover:bg-gray-200 rounded p-2 mr-1 py-1 cursor-pointer
-            ${isSelected ? "bg-gray-300 text-white" : ""}
+            ${isSelected ? "bg-gray-200" : ""}
             `}
                 onClick={() => setSelectedConversation(conversation)}
             >

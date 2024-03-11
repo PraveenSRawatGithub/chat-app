@@ -43,9 +43,13 @@ const MessageInput = () => {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
             />
-            <button type="submit" className="absolute inset-y-0 end-0 flex items-center bg-blue-800 hover:bg-blue-900 px-3 rounded-r-lg text-white">
-              {loading ? <div className="loading loading-spinner"></div> : <BsSend />}
+
+            <button type="submit" className="absolute inset-y-0 end-0 flex items-center px-3 rounded-r-lg text-white">
+              {loading ? <div className="loading loading-spinner"></div> :
+                <button><img className="w-7 h-7" src="https://cdn-icons-png.flaticon.com/128/10747/10747272.png" alt="" /></button>
+              }
             </button>
+
           </div>
         </form>
       </div>
