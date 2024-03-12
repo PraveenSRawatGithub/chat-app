@@ -16,9 +16,5 @@ export default function HomePage() {
 
 // messages - edit, delete, reply
 
-
-// on clcking new message chats they should disapper from new messages section
-// number of new messages on each user
-
 // user typing status
 // file sharing

@@ -38,15 +38,15 @@ const MessageInput = () => {
           <div className="w-full flex relative shadow-sm shadow-gray-200">
             <input ref={inputRef}
               type="text"
-              className="border text-sm rounded-lg block w-full p-2.5  bg-white focus:outline-none  border-gray-400 text-black  placeholder:text-gray-500 "
+              className="border-[1px] text-sm rounded-full block w-full p-2.5  bg-white focus:outline-none  border-gray-400 text-black  placeholder:text-gray-500 "
               placeholder="Send a message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
             />
 
             <button type="submit" className="absolute inset-y-0 end-0 flex items-center px-3 rounded-r-lg text-white">
-              {loading ? <div className="loading loading-spinner"></div> :
-                <button><img className="w-7 h-7" src="https://cdn-icons-png.flaticon.com/128/10747/10747272.png" alt="" /></button>
+              {loading ? <div className="loading loading-spinner text-gray-400"></div> :
+                <button ><img className="w-7 h-7" src="https://cdn-icons-png.flaticon.com/128/10747/10747272.png" alt="" /></button>
               }
             </button>
 
