@@ -86,8 +86,6 @@ export const updateSeenStatus = async (req, res) => {
 export const getLastMessage = async (req, res) => {
     try {
         const { id: receiverId } = req.params;
-        console.log("id got from client : ", receiverId)
-        console.log("id got from client : ", typeof (receiverId))
         const senderId = req.user._id;
 
         const conversation = await Conversation.findOne({

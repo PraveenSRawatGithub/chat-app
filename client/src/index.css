@@ -4,10 +4,7 @@
 
 
 body {
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("https://img.freepik.com/free-photo/painted-solid-concrete-wall-textured-background_53876-101639.jpg?size=626&ext=jpg&ga=GA1.1.1513896353.1705923128&semt=ais");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  background-color: #212121;
 }
 
 /* dark mode looking scrollbar */

@@ -31,7 +31,7 @@ export default function Messages() {
         {!loading && messages.length > 0 && groupMessages.map(groupMessage => (
           <div key={groupMessage.date} className=''>
             <div className=' flex justify-center items-center'>
-              <h1 className=' bg-gray-200 text-sm w-fit px-3 py-1 rounded-xl'>
+              <h1 className=' bg-[#242323] text-white text-sm w-fit px-3 py-1 rounded-xl'>
                 {groupMessage.date === new Date(Date.now()).toDateString() ? "Today" : groupMessage.date}
               </h1>
             </div>

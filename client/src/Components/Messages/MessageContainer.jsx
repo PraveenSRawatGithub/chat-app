@@ -24,7 +24,7 @@ export default function MessageContainer() {
                 <NoChatSelected />
             ) : (
                 <>
-                    <div className=' bg-slate-800 px-4 py-2 mb-2 text-white font-semibold flex items-center gap-3 rounded-b-md'>
+                    <div className=' bg-slate-900 px-4 py-2 mb-2 text-white font-semibold flex items-center gap-3 rounded-b-md'>
                         <img className=' w-9 h-9' src={selectedConversation.profilePic} alt="" />
                         <div className=' flex flex-col '>
                             <span className=' font-bold text-lg'>{selectedConversation.username}</span>
